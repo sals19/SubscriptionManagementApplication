@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: subscription-service
+  namespace: subscription-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: subscription-service
+
+  template:
+    metadata:
+      labels:
+        app: subscription-service
+
+    spec:
+      containers:
+        - name: subscription-service
+          image: subscription-service:1.0
+
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 8000
+
+          envFrom:
+            - configMapRef:
+                name: database-config
+
+            - secretRef:
+                name: database-secret
