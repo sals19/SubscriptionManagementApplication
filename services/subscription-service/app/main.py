@@ -5,7 +5,7 @@ from app.api.subscription_api import router as subscription_router
 
 app = FastAPI(
     title="Subscription Service",
-    version="1.0.0"
+    version="2.0.0"
 )
 
 
