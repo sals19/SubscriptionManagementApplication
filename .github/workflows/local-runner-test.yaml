@@ -1,0 +1,21 @@
+name: Local Runner test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-local-runner:
+    runs-on: self-hosted
+
+    steps:
+      - name: Check Docker
+        run: docker --version
+
+      - name: Check kubectl
+        run: kubectl --version client
+
+      - name: Check minikube
+        run: minikube status
+
+      - name: Check Kubernetes
+        run: kubectl get pods -n subscription-app
