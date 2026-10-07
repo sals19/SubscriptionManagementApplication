@@ -12,7 +12,7 @@ jobs:
         run: docker --version
 
       - name: Check kubectl
-        run: kubectl --version client
+        run: kubectl version --client
 
       - name: Check minikube
         run: minikube status
